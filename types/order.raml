@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+type: object
+displayName: An order
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the order
+  reference?:
+    type: string
+    example: RX93SV
+    description: |
+      An internal references for this order, like an order number or
+      something like it
+  due_date:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this order should be delivered.
+  state:
+    type: string
+    example: draft
+    description: |
+      The state this order is in. Initially an order is always a draft. When
+      order configuration is completed, it shall be set to "placed". Orders can
+      also be canceled by setting the state to "canceled". The states after placed
+      will be set by the printer to allow tracking of the order's progress by the
+      publisher.
+    enum:
+      - draft
+      - placed
+      - in_production
+      - shipping
+      - completed
+      - canceled

@@ -1,0 +1,39 @@
+#%RAML 1.0 DataType
+type: object
+displayName: A line item of an order
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the line item
+  product_identifier:
+    type: string
+    example: "2314"
+    description: |
+      The object ID of a product from the product catalouge, which should be
+      ordered. This can also be an ISBN number or some other form of unique
+      reference that is understood by the printer. A product can only be put once
+      on the same order.
+  quantity:
+    type: integer
+    example: 17
+    description: |
+      The quantity in which the product should be ordered. Must be
+      greater than zero.
+  net_price_per_unit?:
+    type: integer
+    example: 1323
+    description: The net price (without taxes) per unit in cents.
+  net_total_price:
+    type: integer
+    example: 22491
+    description: |
+      The net total price (without taxes) for the entire ordered
+      quantity in cents. Computed by multiplying the net_price_per_unit with
+      the quantity.
+  tax_rate:
+    type: number
+    example: 0.19
+    description: |
+      The tax rate that is applicable to this line item as a percentage,
+      represented by a value between 0 (no tax) and 1 (100% tax).

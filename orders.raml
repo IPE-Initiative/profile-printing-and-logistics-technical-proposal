@@ -1,0 +1,17 @@
+#%RAML 1.0
+title: Publishers / Printers API
+version: v1
+baseUri: https://api.ipe.example/{version}
+securitySchemes:
+  default: !include security.raml
+
+types:
+  Order: !include types/order.raml
+
+/orders:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Order
