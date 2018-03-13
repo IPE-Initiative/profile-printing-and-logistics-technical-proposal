@@ -1,0 +1,22 @@
+#%RAML 1.0 SecurityScheme
+type: x-{other}
+description: |
+  The publisher API requires users to authenticate before they can access or alter any information.
+describedBy:
+  headers:
+    Authorization:
+      description: Contains the key for using the API, which prefixed with the string 'Bearer', followed by a space.
+      type: string
+      pattern: ^Bearer [0-9a-fA-F]{64}$
+      minLength: 71
+      maxLength: 71
+      required: true
+      example: Bearer f338bc59b1ee082ee08600f85022cf7d661426ee342b22c73c18d3875f2e9885
+  responses:
+    401:
+      description:
+        The header is missing or no readable token was provided. Make sure there is space
+        between Bearer and the token.
+    403:
+      description:
+        The token is not correct. It might have expired or was revoked.
