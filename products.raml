@@ -1,0 +1,77 @@
+
+/orders:
+  type:
+    collection:
+      exampleCollection: !include examples/orders.json
+      exampleItem: !include example/order.json
+  get:
+    description: Retrieve a list of all stored orders. This list shall be paginated.
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/orders.json
+  post:
+    description: Create a new, empty order.
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include examples/order.json
+      422:
+        body:
+          application/json:
+            example: !include examples/errors.json
+
+/orders/{id}:
+  patch:
+    description: |
+      Updates the parameters of an existing order. All parameters submitted on order
+      creation can be changed. When the order setup is completed, this method can be
+      used to change the order state to placed, and thus commit the order.
+    responses:
+      204:
+        body:
+      422:
+        body:
+          application/json:
+            example: !include examples/error.json
+
+  delete:
+    description: |
+      Deletes this given order. It will just be removed as long as the order is
+      not placed yet. When the order is already placed, it will be canceled. When
+      the order is already in production, it will also be canceled but process
+      implementation might vary between printers.
+    responses:
+      204:
+        body:
+
+/orders/{id}/billing_information:
+  post:
+    description: |
+      Creates the billing information. Attached billing information is required
+      to place an order. Billing information contains an invoice address, as well
+      as further payment information.
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include examples/billing_information.json
+      422:
+        body:
+          application/json:
+            example: !include examples/error.json
+
+  patch:
+    description: |
+      Modifies previously created billing information. All attributes that were
+      supplied during creation can also be modified later as long as the order is
+      not placed
+    responses:
+      204:
+        body:
+      422:
+        body:
+          application/json:
+            example: !include examples/error.json

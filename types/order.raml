@@ -10,20 +10,21 @@ properties:
     type: string
     example: RX93SV
     description: |
-      An internal references for this order, like an order number or
-      something like it
+      An internal reference for this order, which is used to identify the order
+      through the entire process at the printers. The format is defined by the printer
+      and may vary from printer to printer.
   due_date:
     type: datetime
     example: 2017-09-11T08:45:00+02:00
     description: |
-      The date on which this order should be delivered.
+      The date on which this order should be delivered to their destination.
   state:
     type: string
     example: draft
     description: |
       The state this order is in. Initially an order is always a draft. When
       order configuration is completed, it shall be set to "placed". Orders can
-      also be canceled by setting the state to "canceled". The states after placed
+      also be canceled by setting the state to "canceled". The states follwing placed
       will be set by the printer to allow tracking of the order's progress by the
       publisher.
     enum:
@@ -33,3 +34,13 @@ properties:
       - shipping
       - completed
       - canceled
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.

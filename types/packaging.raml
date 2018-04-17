@@ -1,0 +1,42 @@
+#%RAML 1.0 DataType
+type: object
+displayName: A packaging
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the packaging
+  amount_per_shrink_warp?:
+    type: integer
+    example: 15
+    description: |
+      The amount of products that should be contained in a single shrink wrap.
+      When this is left blank, no shrink wrapping will occur.
+  amount_per_box?:
+    type: integer
+    example: 10
+    description: |
+      The amount of products that should be contained in a single box. If shrink
+      wrapping is selected as well, this amount still refers to the amount of products.
+      However in this case the amount per box must be evenly divisible by the amount
+      per shrink wrap. If left blank, not boxing will occur. Please note that at least
+      one of amount_per_box or amount_per_pallet must be given.
+  amount_per_pallet?:
+    type: integer
+    example: 5
+    description: |
+      The amount of product that should be put on a single pallet. If boxing or shring
+      wrapping is selected as will, this amount still refers to the amount of products,
+      not the amount of wraps or boxes. However in this case, the amount must be evenly
+      divisible by the amount of shrink wraps and boxes. Please note that at least one of
+      amount_per_box or amount_per_pallet must be given.
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.

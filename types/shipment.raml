@@ -1,0 +1,81 @@
+#%RAML 1.0 DataType
+type: object
+displayName: A shipment
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the shipment
+  addressee:
+    type: string
+    example:
+      James Bond
+      007
+      c/o MI5 Intelligence Service
+    description: |
+      The addressee, to whom this shipment should be delivered. Line breaks ("\n")
+      can be used to create up to 3 lines for addressee information.
+  contact_phone?:
+    type: string
+    example: +49123456789BLA
+    description: |
+      A contact phone number in international format, which starts with +XX, where XX is
+      the country code, followed by the number without a leading zero. This phone
+      number can be used by the carrier to reach the recipient in case of shipping
+      trouble. Not all carriers support this.
+  contact_email?:
+    type: string
+    example: bond.james@example.com
+    description: |
+      A contact email address that can be used by the carrier to reach the recipient
+      in case of shipping trouble. Not all carriers support this.
+  street:
+    type: string
+    example: Downing St
+    description: |
+      The destination's street name.
+  addition?:
+    type: string
+    example: Apparment 3C, 2 floor, 3rd door on the left
+    description: |
+      An additonal text to clearify the street and number information, like apparment,
+      storage unit or back door information.
+  number:
+    type: string
+    example: 15c
+    description: |
+      The street number of the destination. Might be only digits or letters. Shall
+      not be longer than 10 characters.
+  zip_code:
+    type: string
+    example: 1B3231
+    description: |
+      The zip (postal) code of the destination. The format varies from country
+      to country. See [list of zip codes per county](https://en.wikipedia.org/wiki/List_of_postal_codes).
+  town:
+    type: string
+    example: London
+    description: |
+      The destination's town name.
+  state?:
+    type: string
+    example: California
+    description: |
+      The state or province the destination is located. This might not be required
+      for most countries.
+  country:
+    type: string
+    example: UK
+    description: |
+      The [ISO 3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+      of the destination country.
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.

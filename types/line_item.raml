@@ -10,10 +10,10 @@ properties:
     type: string
     example: "2314"
     description: |
-      The object ID of a product from the product catalouge, which should be
-      ordered. This can also be an ISBN number or some other form of unique
-      reference that is understood by the printer. A product can only be put once
-      on the same order.
+      The identifier of the product that should be ordered. This identifier may
+      vary for different printers. It needs to be a unique string that is known to
+      the publisher and the printer and identifies the same product on both ends.
+      When possible, already existing identifiers like ISBNs should be used.
   quantity:
     type: integer
     example: 17
@@ -24,7 +24,7 @@ properties:
     type: integer
     example: 1323
     description: The net price (without taxes) per unit in cents.
-  net_total_price:
+  net_total_price?:
     type: integer
     example: 22491
     description: |
@@ -37,3 +37,13 @@ properties:
     description: |
       The tax rate that is applicable to this line item as a percentage,
       represented by a value between 0 (no tax) and 1 (100% tax).
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.
