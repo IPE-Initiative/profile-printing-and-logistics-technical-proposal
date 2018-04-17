@@ -1,0 +1,60 @@
+#%RAML 1.0 DataType
+type: object
+displayName: A product
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the product
+
+  type:
+    type: string
+    example: hardcover
+    description: The product type
+    enum:
+      - hardcover
+      - softcover
+
+  title:
+    type: string
+    example: Illuminati
+    description: |
+      The title of the product
+
+  category:
+    type: string
+    example: fiction/novella
+    description: |
+      A category/sub-category that describes the content of the product best.
+
+  isbn?:
+    type: string
+    example: "9780672317248"
+    description: |
+      A ISBN 10 or 13 number without dashes for this product.
+    pattern: ^(97(8|9))?\d{9}(\d|X)$
+
+  edition?:
+    type: integer
+    example: 2
+    description: |
+      The edition of the product, which can be used to create an ordinal number.
+
+  language?:
+    type: string
+    example: en
+    description: |
+      The primary language the content of this product is written in as
+      [ITEF language tag](https://en.wikipedia.org/wiki/IETF_language_tag#ISO_639-3_and_ISO_639-1)
+
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.

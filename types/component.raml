@@ -1,0 +1,65 @@
+#%RAML 1.0 DataType
+type: object
+displayName: A component
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the component
+
+  type:
+    type: string
+    example: cover
+    description: |
+      The component's type. Which components are available depends on the product
+      that this component belongs to.
+    enum:
+      - case
+      - cover
+      - content
+      - endpaper
+      - jacket
+
+  number_of_pages:
+    type: integer
+    example: 12
+    description: |
+      The number of pages of this component. Some components have fixed number of
+      pages (i.e. jacket always has 4), other page numbers might vary (i.e. content).
+      The number of pages must be an even number, and the server is allowed to
+      decline certain page numbers in certain context (i.e. needs to be divisble
+        by 4, 8 or 16)
+
+  front_colors:
+    type: array
+    uniqueItems: true
+    items: string
+    example: [CMYK/black, CMYK/yellow]
+    description: |
+      The colours which should be used on the front of each page of this component.
+      The colour format is System/colour name, systems can be "CMYK", "Pantone", "HKS"
+      or "Custom". A colour might only appear once inside the array. If no printing
+      is required the array shall be empty.
+
+  back_colors:
+    type: array
+    uniqueItems: true
+    items: string
+    example: [CMYK/black, CMYK/yellow]
+    description: |
+      The colours which should be used on the back of each page of this component.
+      The colour format is System/colour name, systems can be "CMYK", "Pantone", "HKS"
+      or "Custom". A colour might only appear once inside the array. If no printing
+      is required the array shall be empty.
+
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.

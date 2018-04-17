@@ -1,5 +1,5 @@
 #%RAML 1.0
-title: Publishers / Printers API
+title: Interface between publishers and printers for ordering print products
 version: v1
 baseUri: https://api.ipe.example/{version}
 securitySchemes:
@@ -7,6 +7,9 @@ securitySchemes:
 
 types:
   Order: !include types/order.raml
+  LineItem: !include types/line_item.raml
+  Packaging: !include types/packaging.raml
+  Shipment: !include types/shipment.raml
 
 /orders:
   get:
@@ -15,3 +18,51 @@ types:
         body:
           application/json:
             type: Order
+  post:
+    responses:
+      201:
+        body:
+          application/json:
+            type: Order
+
+  /{order_id}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Order
+
+    patch:
+      responses:
+        200:
+          body:
+        422:
+          body:
+
+    delete:
+      responses:
+        200:
+          body:
+
+    /line_items:
+      get:
+      post:
+      /{line_item_id}:
+        get:
+        patch:
+        delete:
+        /packagings:
+          get:
+          post:
+          /{packaging_id}:
+            get:
+            patch:
+            delete:
+    /shipments:
+      get:
+      post:
+      /{shipment_id}:
+        get:
+        patch:
+        delete:

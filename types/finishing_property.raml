@@ -1,0 +1,29 @@
+#%RAML 1.0 DataType
+type: object
+displayName: A finishing property
+properties:
+  id:
+    type: integer
+    example: 1337
+    description: The object ID of the finishing property
+  key:
+    type: string
+    example: number_of_holes
+    description: The name of the property for which a value should be defined
+  value:
+    type: any
+    examples:
+      - true
+      - 45
+      - jdf_fold_23_2
+    description: The value for the property represented by the key
+  created_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was created.
+  updated_at:
+    type: datetime
+    example: 2017-09-11T08:45:00+02:00
+    description: |
+      The date on which this record was last updated.
